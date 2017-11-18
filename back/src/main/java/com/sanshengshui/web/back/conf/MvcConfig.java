@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableScheduling
 @ComponentScan(basePackages =
         {"com.sanshengshui.web.back.controller",
+                "com.sanshengshui.web.task",
                 "com.sanshengshui.web.service"})
 @MapperScan("com.sanshengshui.web.dao.mapper")
 public class MvcConfig extends WebMvcConfigurerAdapter {
