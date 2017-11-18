@@ -1,5 +1,6 @@
 package com.sanshengshui.web.back.conf;
 
+import com.sanshengshui.web.cache.conf.CacheConfig;
 import com.sanshengshui.web.dao.conf.DatabaseConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -17,7 +18,7 @@ public class WebApplicationInitializer extends AbstractAnnotationConfigDispatche
      */
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{BackConfig.class, DatabaseConfig.class, SecurityConfig.class};
+        return new Class[]{BackConfig.class, DatabaseConfig.class, SecurityConfig.class, CacheConfig.class};
     }
 
     @Override

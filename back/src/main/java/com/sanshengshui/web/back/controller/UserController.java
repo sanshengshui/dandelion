@@ -1,5 +1,9 @@
 package com.sanshengshui.web.back.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.sanshengshui.web.bean.User;
+import com.sanshengshui.web.cache.CacheKey;
+import com.sanshengshui.web.cache.CacheService;
 import com.sanshengshui.web.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +20,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CacheService cacheService;
+
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")// isAuthenticated 如果用户不是匿名用户就返回true
     public String showHomePage() {
         try {
-            userService.loadUserByUsername("admin");
+
+            User user = userService.loadUserByUsername("admin");
+
+//            测试缓存服务
+//            缓存用户对象到redis,以用户ID区分
+            cacheService.set(CacheKey.LOGIN_USER_KEY + user.getId(), JSON.toJSONString(user));
+//            从缓存中取出
+            String userStr = cacheService.get(CacheKey.LOGIN_USER_KEY + user.getId());
+//            进行反序列化
+            User u = JSON.parseObject(userStr, User.class);
+            if(u != null){
+                logger.info("user:{}", u);
+            }
             logger.info("load user ");
         }catch (Exception e){
             logger.error(e.getLocalizedMessage(), e);

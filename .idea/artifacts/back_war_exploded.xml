@@ -22,6 +22,7 @@
           <element id="archive" name="cache-1.0-SNAPSHOT.jar">
             <element id="module-output" name="cache" />
           </element>
+          <element id="library" level="project" name="Maven: redis.clients:jedis:2.7.2" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.6" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.6.RELEASE" />

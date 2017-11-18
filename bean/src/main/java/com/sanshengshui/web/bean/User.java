@@ -9,6 +9,18 @@ public class User {
     private boolean enabled;
     private Date createDate;
 
+    @Override
+    public String toString() {
+       final StringBuffer stringBuffer= new StringBuffer("User{");
+       stringBuffer.append("id=").append(id);
+        stringBuffer.append(", username='").append(username).append('\'');
+        stringBuffer.append(", password='").append(password).append('\'');
+        stringBuffer.append(", enabled=").append(enabled);
+        stringBuffer.append(", createDate=").append(createDate);
+        stringBuffer.append('}');
+        return stringBuffer.toString();
+    }
+
     public Integer getId() {
         return id;
     }
